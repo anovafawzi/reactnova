@@ -1,0 +1,25 @@
+{
+	"field.emailAddress": "Email address",
+	"field.password": "Password",
+	"field.repeatpassword": "Repeat password",
+	"field.firstname": "First Name",
+	"field.lastname": "Last Name",
+	"field.dob": "Date of Birth",
+	"field.handphone": "Handphone",
+  "field.address": "Address",
+
+  "label.login": "Login",
+  "label.forgotPassword": "Forgot password?",
+  "label.signInToYourAccount": "Sign In to your account",
+
+	"error.registerfailed": "Registration failed",
+	"error.passwordnotsame": "Repeat password not the same with password",
+	"error.tokenexpired": "Token is expired",
+	"error.404title": "Oops, we can't find that page",
+	"error.404desc": "The page you are looking for was not found",
+	"error.500title": "We got a situation now",
+	"error.500desc": "The page you are looking for is temporarily unavailable",
+	"error.tooshort": "Too short!",
+	"error.toolong": "Too long!",
+	"error.required": "Required"
+}

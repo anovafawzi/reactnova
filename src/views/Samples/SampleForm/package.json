@@ -1,0 +1,6 @@
+{
+  "name": "SampleForm",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SampleForm.js"
+}
