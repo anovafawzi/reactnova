@@ -154,6 +154,7 @@ But I'm not so dig into that, so in the `AppStore.js` you can see the context on
 ### Custom hooks for separating context domain
 
 In `hooks` folder,  there are currently three hooks created.
+
 | Hooks | Import | Description |
 | ------ | ------ | ------ |
 | Loader Hooks | `useLoader` | To connect with application loading spinner |
@@ -198,6 +199,16 @@ reactnova
  - Add `final-form` example
  - Add `cypress` example
  - Add more documentation
+
+## Samples
+
+### Sample for data retrieval
+
+You can check on `localhost:3000/sampledata`, it already connected with the context, how to call a data from context and used it on page.
+
+### Sample for forms
+
+Still work in progress.
 
 ### Author
 Contact me at anovafawzi@gmail.com or go to my [website].
