@@ -1,0 +1,19 @@
+// show field invalid messages for manual showing (not coupled with reactstrap component)
+.invalid-field {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: $danger;
+}
+
+// adjustment for react-datetime with react-strap (bootstrap) layout
+.rdt-datefield {
+  flex: 1 1 auto;
+  width: 1%;
+}
+
+// adjustment for react-dates with invalid dates
+.drp-invalid-field {
+  border: 1px solid $danger;
+  width: fit-content; // remove if we want full width
+}

@@ -39,6 +39,7 @@ const User = React.lazy(() => import('./views/Users/User'));
 
 // sample examples
 const SampleData = React.lazy(() => import('./views/Samples/SampleData'));
+const SampleForm = React.lazy(() => import('./views/Samples/SampleForm'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -83,7 +84,9 @@ const routes = [
   { path: '/charts', name: 'Charts', component: Charts },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
-  { path: '/sampledata', name: 'Sample Data Retrieval', component: SampleData },
+  { path: '/sample', exact: true, name: 'Base Sample', component: SampleData },
+  { path: '/sample/sampledata', name: 'Sample Data Retrieval', component: SampleData },
+  { path: '/sample/sampleform', name: 'Sample Form', component: SampleForm },
 ];
 
 export default routes;
