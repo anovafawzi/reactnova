@@ -27,6 +27,8 @@ import {
 import NumberFormat from 'react-number-format';
 import Datetime from 'react-datetime';
 import moment from 'moment';
+import Select from 'react-select';
+import { AppSwitch } from '@coreui/react'
 
 import 'react-dates/initialize';
 // styles for react-dates
@@ -37,7 +39,6 @@ import {
   DayPickerRangeController
 } from 'react-dates';
 
-
 // styles for react-datetime
 import 'react-datetime/css/react-datetime.css';
 
@@ -46,13 +47,20 @@ const SampleForm = () => {
   const [fadeIn, setFadeIn] = useState(true);
   const [collapse, setCollapse] = useState(true);
 
+  // react-dates
   const [reactDatesDate, setReactDatesDate] = useState({
     startDate: null,
     endDate: null
   });
-  const [startDate, setStartDate] = useState(moment());
-  const [endDate, setEndDate] = useState(moment());
   const [focusedInput, setFocusedInput] = useState(null);
+
+  // react-select
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [options, setOptions] = useState([
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]);
 
   const toggle = () => {
     setCollapse(!collapse);
@@ -62,10 +70,9 @@ const SampleForm = () => {
     setFadeIn(!fadeIn);
   }
 
-  const setDateRange = ({newStartDate, newEndDate}) => {
-    console.log({newStartDate, newEndDate});
-    setStartDate(newStartDate);
-    setEndDate(newEndDate);
+  const handleSelectChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+    console.log(`Option selected:`, selectedOption);
   }
 
   return (
@@ -309,6 +316,150 @@ const SampleForm = () => {
                               />
                             </div>
                             <div className="invalid-field">Houston, we have a problem...</div>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup>
+                            <Label htmlFor="name">Select (searchable, multi value)</Label>
+                            <Select
+                              classNamePrefix={'invalid-field'}
+                              value={selectedOption}
+                              onChange={handleSelectChange}
+                              options={options}
+                              isMulti
+                              isClearable
+                              isSearchable
+                              // theme={(theme) => ({
+                              //   ...theme,
+                              //   borderRadius: 0,
+                              //   colors: {
+                              //   ...theme.colors,
+                              //     neutral50: 'hotpink',
+                              //   },
+                              // })}
+                            />
+                            <div className="invalid-field">Houston, we have a problem...</div>
+                            {/* OR USE THIS <div className="invalid-field">Houston, we have a problem...</div> */}
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup row>
+                            <Col md="12">
+                              <Label htmlFor="name">Select (searchable, multi value) with prepended and appended icon</Label>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="fa fa-clock-o"></i>
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Select
+                                  className={'rs-group'}
+                                  classNamePrefix={'invalid-field'}
+                                  value={selectedOption}
+                                  onChange={handleSelectChange}
+                                  options={options}
+                                  isMulti
+                                  isClearable
+                                  isSearchable
+                                  // theme={(theme) => ({
+                                  //   ...theme,
+                                  //   borderRadius: 0,
+                                  //   colors: {
+                                  //   ...theme.colors,
+                                  //     neutral50: 'hotpink',
+                                  //   },
+                                  // })}
+                                />
+                                <InputGroupAddon addonType="append">
+                                  <InputGroupText>.00</InputGroupText>
+                                </InputGroupAddon>
+                              </InputGroup>
+                              <div className="help-block invalid-field">Please provide a valid information</div>
+                            </Col>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup>
+                            <Label htmlFor="name">Autocomplete</Label>
+                            <Select
+                              classNamePrefix={'invalid-field'}
+                              value={selectedOption}
+                              onChange={handleSelectChange}
+                              options={options}
+                              isSearchable
+                              // theme={(theme) => ({
+                              //   ...theme,
+                              //   borderRadius: 0,
+                              //   colors: {
+                              //   ...theme.colors,
+                              //     neutral50: 'hotpink',
+                              //   },
+                              // })}
+                            />
+                            <div className="invalid-field">Houston, we have a problem...</div>
+                            {/* OR USE THIS <div className="invalid-field">Houston, we have a problem...</div> */}
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup row>
+                            <Col md="12">
+                              <Label htmlFor="name">Autocomplete with prepended and appended icon</Label>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>
+                                    <i className="fa fa-clock-o"></i>
+                                  </InputGroupText>
+                                </InputGroupAddon>
+                                <Select
+                                  className={'rs-group'}
+                                  classNamePrefix={'invalid-field'}
+                                  value={selectedOption}
+                                  onChange={handleSelectChange}
+                                  options={options}
+                                  isSearchable
+                                  // theme={(theme) => ({
+                                  //   ...theme,
+                                  //   borderRadius: 0,
+                                  //   colors: {
+                                  //   ...theme.colors,
+                                  //     neutral50: 'hotpink',
+                                  //   },
+                                  // })}
+                                />
+                                <InputGroupAddon addonType="append">
+                                  <InputGroupText>.00</InputGroupText>
+                                </InputGroupAddon>
+                              </InputGroup>
+                              <div className="help-block invalid-field">Please provide a valid information</div>
+                            </Col>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup row>
+                            <Col md="2">
+                              <AppSwitch className={'mx-1'} variant={'3d'} color={'primary'} defaultChecked label dataOn={'\u2713'} dataOff={'\u2715'} />
+                            </Col>
+                            <Col md="10">
+                              <Label htmlFor="name">Switch</Label>
+                            </Col>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup check inline>
+                            <Input className="form-check-input" type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" />
+                            <Label className="form-check-label" check htmlFor="inline-checkbox1">One</Label>
                           </FormGroup>
                         </Col>
                       </Row>

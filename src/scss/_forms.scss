@@ -5,6 +5,13 @@
   font-size: 80%;
   color: $danger;
 }
+.invalid-field-border {
+  border-color: $danger;
+}
+/* specific for react-select invalid field */
+.invalid-field__control {
+  border-color: $danger !important;
+}
 
 // adjustment for react-datetime with react-strap (bootstrap) layout
 .rdt-datefield {
@@ -16,4 +23,10 @@
 .drp-invalid-field {
   border: 1px solid $danger;
   width: fit-content; // remove if we want full width
+}
+
+// adjustment for react-select
+.rs-group {
+  flex: 1 1 auto;
+  width: 1%;
 }
