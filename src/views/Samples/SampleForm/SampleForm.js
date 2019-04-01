@@ -458,13 +458,37 @@ const SampleForm = () => {
                       <Row>
                         <Col xs="12">
                           <FormGroup check inline>
-                            <Input className="form-check-input" type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" />
-                            <Label className="form-check-label" check htmlFor="inline-checkbox1">One</Label>
+                            <Input className="form-check-input form-checkbox" type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" />
+                            <Label className="form-check-label" check htmlFor="inline-checkbox1">Checkbox example</Label>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup check inline>
+                            <Input className="form-check-input form-checkbox" type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1" disabled />
+                            <Label className="form-check-label" check htmlFor="inline-checkbox1">Checkbox example</Label>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup check inline>
+                            <Input className="form-check-input form-radio" type="radio" id="inline-radio1" name="inline-radio1" value="option2" />
+                            <Label className="form-check-label" check htmlFor="inline-radio1">Radio example</Label>
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col xs="12">
+                          <FormGroup check inline>
+                            <Input className="form-check-input form-radio" type="radio" id="inline-radio1" name="inline-radio1" value="option2" disabled />
+                            <Label className="form-check-label" check htmlFor="inline-radio1">Radio example</Label>
                           </FormGroup>
                         </Col>
                       </Row>
 
-                      <FormGroup>
+                      {/* <FormGroup>
                         <Label htmlFor="prependedInput">Prepended text</Label>
                         <div className="controls">
                           <InputGroup className="input-prepend">
@@ -524,7 +548,7 @@ const SampleForm = () => {
                             </InputGroupAddon>
                           </InputGroup>
                         </div>
-                      </FormGroup>
+                      </FormGroup> */}
                       <div className="form-actions">
                         <Button type="submit" color="primary">Save changes</Button>
                         <Button color="secondary">Cancel</Button>
