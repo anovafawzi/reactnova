@@ -7,8 +7,12 @@ import AppContext from './AppContext';
 // import { userReducer, loaderReducer, sampleReducer } from '../reducers';
 // import { UserAction, SampleAction, LoaderAction } from '../constants/ActionList';
 
-// import custom hooks
-import { useUser, useLoader, useSampleData } from '../hooks';
+// import actions
+import {
+  useUserActions,
+  useLoaderActions,
+  useSampleDataActions
+} from '../actions';
 
 const AppStore = props => {
   // use all reducers here
@@ -17,9 +21,9 @@ const AppStore = props => {
   //const [sampleDataState, dispatchSampleData] = useReducer(sampleReducer, {});
 
   // import all custom hooks for all context domain here
-  const [loaderObject] = useLoader();
-  const [userObject] = useUser();
-  const [sampleDataObject] = useSampleData(loaderObject);
+  const [LoaderActions] = useLoaderActions();
+  const [UserActions] = useUserActions(LoaderActions);
+  const [SampleDataActions] = useSampleDataActions(LoaderActions);
 
   // put all actions here, and dispatch!
   // const userLogin = userLoginModel => {
@@ -55,16 +59,18 @@ const AppStore = props => {
     <AppContext.Provider
       value={{
         // loader domain
-        isShowLoader: loaderObject.state.isShowLoader,
+        isShowLoader: LoaderActions.state.isShowLoader,
+        showLoader: LoaderActions.showLoader,
+        hideLoader: LoaderActions.hideLoader,
 
         // user domain
-        loggedInUser: userObject.state.userLoginModel,
-        userLogin: userObject.userLogin,
-        userLogout: userObject.userLogout,
+        loggedInUser: UserActions.state.userLoginModel,
+        userLogin: UserActions.userLogin,
+        userLogout: UserActions.userLogout,
 
         // sample data domain
-        getSampleData: sampleDataObject.getSampleData,
-        sampleData: sampleDataObject.state.sampleData,
+        getSampleData: SampleDataActions.getSampleData,
+        sampleData: SampleDataActions.state.sampleData,
       }}
     >
       {props.children}

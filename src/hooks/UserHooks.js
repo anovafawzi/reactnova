@@ -1,21 +1,11 @@
-import { useReducer } from 'react';
-import { userReducer } from '../reducers';
-import { UserAction } from '../constants/ActionList';
+import { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 export const useUser = () => {
-  const [state, dispatch] = useReducer(userReducer, {});
+  const context = useContext(AppContext);
+  const { loggedInUser, userLogin, userLogout } = context;
 
-  const userLogin = userLoginModel => {
-    dispatch({ type: UserAction.USER_LOGIN, userLoginModel });
-  }
-
-  const userLogout = () => {
-    dispatch({ type: UserAction.USER_LOGOUT });
-  }
-
-  return [{
-    state,
-    userLogin,
-    userLogout,
-  }];
+  return [
+    loggedInUser, userLogin, userLogout
+  ];
 }

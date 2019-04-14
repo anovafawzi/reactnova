@@ -1,14 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 
-import AppContext from '../../../context/AppContext';
+// load sample data hooks
+import { useSampleData } from '../../../hooks';
 
 const SampleData = () => {
-  const context = useContext(AppContext);
   const [url, setUrl] = useState('');
+  const [sampleData, getSampleData] = useSampleData();
 
   useEffect(() => {
-    context.getSampleData(url);
+    getSampleData(url);
   }, [url]);
 
   return (
@@ -31,7 +32,7 @@ const SampleData = () => {
                 </thead>
                 <tbody>
                   {
-                    context.sampleData && context.sampleData.data.results.map((item, index) => (
+                    sampleData && sampleData.data.results.map((item, index) => (
                       <tr key={index}>
                         <td>{item.name}</td>
                         <td>{item.eye_color}</td>
@@ -43,14 +44,14 @@ const SampleData = () => {
                 </tbody>
               </Table>
               <Pagination>
-                {context.sampleData && (context.sampleData.data.previous !== null) && <PaginationItem><PaginationLink previous tag="button" onClick={() => setUrl(context.sampleData.data.previous)}>Prev</PaginationLink></PaginationItem>}
+                {sampleData && (sampleData.data.previous !== null) && <PaginationItem><PaginationLink previous tag="button" onClick={() => setUrl(sampleData.data.previous)}>Prev</PaginationLink></PaginationItem>}
                 {/* <PaginationItem active>
                   <PaginationLink tag="button">1</PaginationLink>
                 </PaginationItem>
                 <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
                 <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
                 <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem> */}
-                {context.sampleData && (context.sampleData.data.next !== null) && <PaginationItem><PaginationLink next tag="button" onClick={() => setUrl(context.sampleData.data.next)}>Next</PaginationLink></PaginationItem>}
+                {sampleData && (sampleData.data.next !== null) && <PaginationItem><PaginationLink next tag="button" onClick={() => setUrl(sampleData.data.next)}>Next</PaginationLink></PaginationItem>}
               </Pagination>
             </CardBody>
           </Card>
@@ -74,7 +75,7 @@ const SampleData = () => {
                 </thead>
                 <tbody>
                   {
-                    context.sampleData && context.sampleData.data.results.map((item, index) => (
+                    sampleData && sampleData.data.results.map((item, index) => (
                       <tr key={index}>
                         <td>{item.name}</td>
                         <td>{item.eye_color}</td>
@@ -87,14 +88,14 @@ const SampleData = () => {
               </Table>
               <nav>
                 <Pagination>
-                  {context.sampleData && (context.sampleData.data.previous !== null) && <PaginationItem><PaginationLink previous tag="button" onClick={() => setUrl(context.sampleData.data.previous)}>Prev</PaginationLink></PaginationItem>}
+                  {sampleData && (sampleData.data.previous !== null) && <PaginationItem><PaginationLink previous tag="button" onClick={() => setUrl(sampleData.data.previous)}>Prev</PaginationLink></PaginationItem>}
                   {/* <PaginationItem active>
                     <PaginationLink tag="button">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
                   <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem> */}
-                  {context.sampleData && (context.sampleData.data.next !== null) && <PaginationItem><PaginationLink next tag="button" onClick={() => setUrl(context.sampleData.data.next)}>Next</PaginationLink></PaginationItem>}
+                  {sampleData && (sampleData.data.next !== null) && <PaginationItem><PaginationLink next tag="button" onClick={() => setUrl(sampleData.data.next)}>Next</PaginationLink></PaginationItem>}
                 </Pagination>
               </nav>
             </CardBody>

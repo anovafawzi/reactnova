@@ -5,7 +5,8 @@ import intl from 'react-intl-universal';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import AppContext from '../../../context/AppContext';
+// load user hooks
+import { useUser } from '../../../hooks';
 
 const loginSchema = Yup.object().shape({
   username: Yup.string()
@@ -18,10 +19,10 @@ const loginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-    const context = useContext(AppContext);
+    const [loggedInUser, userLogin, userLogout] = useUser();
 
     useEffect(() => {
-      console.log(context);
+      console.log(loggedInUser);
     }, []);
 
     return (
@@ -40,7 +41,7 @@ const Login = () => {
                             //     actions.setSubmitting(false);
                             //     }, 1000);
                             console.log(values);
-                            context.userLogin(values);
+                            userLogin(values);
                         }}
                         validationSchema={loginSchema}
                         render={props => (

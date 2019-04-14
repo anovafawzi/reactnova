@@ -1,21 +1,11 @@
-import { useReducer } from 'react';
-import { loaderReducer } from '../reducers';
-import { LoaderAction } from '../constants/ActionList';
+import { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 export const useLoader = () => {
-  const [state, dispatch] = useReducer(loaderReducer, {});
+  const context = useContext(AppContext);
+  const { isShowLoader, showLoader, hideLoader } = context;
 
-  const showLoader = () => {
-    dispatch({ type: LoaderAction.SHOW_LOADER, isShowLoader: true });
-  }
-
-  const hideLoader = () => {
-    dispatch({ type: LoaderAction.HIDE_LOADER, isShowLoader: false });
-  }
-
-  return [{
-    state,
-    showLoader,
-    hideLoader,
-  }];
+  return [
+    isShowLoader, showLoader, hideLoader
+  ];
 }
