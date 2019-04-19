@@ -1,3 +1,8 @@
+// required asterisk symbol
+.required-sign {
+  color: $danger;
+}
+
 // show field invalid messages for manual showing (not coupled with reactstrap component)
 .invalid-field {
   width: 100%;
