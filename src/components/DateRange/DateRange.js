@@ -22,10 +22,6 @@ const DateRange = ({
 
   onValueChange
 }) => {
-  const [reactDatesDate, setReactDatesDate] = useState({
-    startDate: null,
-    endDate: null
-  });
   const [focusedInput, setFocusedInput] = useState(null);
 
   return (

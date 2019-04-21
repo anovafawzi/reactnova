@@ -39,6 +39,7 @@ import {
   NumberInput,
   DateTimeInput,
   DateRangeInput,
+  SelectInput,
 } from '../../../components/FieldWrapper/FinalForm/FinalForm';
 
 // schema validator
@@ -78,6 +79,10 @@ const sampleFormSchema = Yup.object().shape({
   dateTest: Yup.string()
     .required('Required'),
   timeTest: Yup.string()
+    .required('Required'),
+  selectTest: Yup.string()
+    .required('Required'),
+  selectMultiTest: Yup.string()
     .required('Required'),
 });
 
@@ -634,9 +639,13 @@ const SampleForm = () => {
                       onSubmit={onHandleFinalFormSubmit}
                       initialValues={{
                         dateRangeTest: {
-                          startDate: '01/05/2019',
-                          endDate: '05/05/2019',
-                        }
+                          // startDate: '01/05/2019',
+                          // endDate: '05/05/2019',
+                          startDate: moment(),
+                          endDate: moment()
+                        },
+                        selectTest: 'strawberry',
+                        selectMultiTest: ['strawberry', 'vanilla'],
                       }}
                       render={({handleSubmit, form, submitting, pristine, values}) => (
                         <form onSubmit={handleSubmit}>
@@ -706,6 +715,27 @@ const SampleForm = () => {
                           <DateRangeInput
                             name="dateRangeTest"
                             label="Date Range test"
+                          />
+                          <SelectInput
+                            name="selectTest"
+                            label="Select single value test"
+                            isRequired
+                            options={[
+                              { value: 'chocolate', label: 'Chocolate' },
+                              { value: 'strawberry', label: 'Strawberry' },
+                              { value: 'vanilla', label: 'Vanilla' }
+                            ]}
+                          />
+                          <SelectInput
+                            name="selectMultiTest"
+                            label="Select multiple value test"
+                            isRequired
+                            options={[
+                              { value: 'chocolate', label: 'Chocolate' },
+                              { value: 'strawberry', label: 'Strawberry' },
+                              { value: 'vanilla', label: 'Vanilla' }
+                            ]}
+                            isMulti
                           />
                           <div className="form-actions">
                             <Button type="submit" color="primary">Save changes</Button>

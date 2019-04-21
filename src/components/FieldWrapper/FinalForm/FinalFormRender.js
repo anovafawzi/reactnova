@@ -31,6 +31,7 @@ import moment from 'moment';
 // custom components
 import {
   PasswordInput,
+  SelectInput,
   DateRange
 } from '../../../components';
 
@@ -102,6 +103,12 @@ export const RenderInput = ({
   defaultValue,
   dateFormat,
   timeFormat,
+
+  // select input
+  options,
+  isMulti,
+  isClearable,
+  isSearchable,
 }) => {
   return (
     <React.Fragment>
@@ -150,6 +157,11 @@ export const RenderInput = ({
                 defaultValue={defaultValue}
                 dateFormat={dateFormat}
                 timeFormat={timeFormat}
+
+                options={options}
+                isMulti={isMulti}
+                isClearable={isClearable}
+                isSearchable={isSearchable}
               />
               {
                 appendText
@@ -186,6 +198,11 @@ export const RenderInput = ({
               defaultValue={defaultValue}
               dateFormat={dateFormat}
               timeFormat={timeFormat}
+
+              options={options}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              isSearchable={isSearchable}
             />
         }
         {touched && (error && <div className="help-block invalid-field">{error}</div>)}
@@ -217,6 +234,12 @@ export const InputSelector = ({
   defaultValue,
   dateFormat = 'DD/MM/YYYY',
   timeFormat = 'HH:mm',
+
+  // select input
+  options,
+  isMulti = false,
+  isClearable = true,
+  isSearchable = true,
 }) => {
   switch (inputType) {
     case InputType.SIMPLE_INPUT:
@@ -311,6 +334,27 @@ export const InputSelector = ({
           touched={touched}
           error={error}
         />
+      );
+    case InputType.SELECT_AUTOCOMPLETE_INPUT:
+      return (
+        <React.Fragment>
+          <SelectInput
+            value={input.value}
+            options={options}
+            label={input.label}
+            // value={input.value}
+            onValueChange={selectedValue =>
+              input.onChange(
+                selectedValue
+              )
+            }
+            isMulti={isMulti}
+            isClearable={isClearable}
+            isSearchable={isSearchable}
+            touched={touched}
+            error={error}
+          />
+        </React.Fragment>
       );
     default:
       return (

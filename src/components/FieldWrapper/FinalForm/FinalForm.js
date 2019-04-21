@@ -192,3 +192,46 @@ export const DateRangeInput = ({
     />
   )
 }
+
+export const SelectInput = ({
+  name,
+  type,
+  label,
+  placeholder,
+  isInline = false,
+  isRequired = false,
+  isAppendIcon = false,
+  isPrependTextHtml = false,
+	prependText = '',
+	isAppendTextHtml = false,
+  appendText = '',
+
+  options,
+  isMulti,
+  isClearable,
+  isSearchable,
+}) => {
+  return (
+    <React.Fragment>
+      <Field
+        inputType={InputType.SELECT_AUTOCOMPLETE_INPUT}
+        name={name}
+        component={RenderInput}
+        type={type}
+        label={label}
+        placeholder={placeholder}
+        isInline={isInline}
+        isRequired={isRequired}
+        isAppendIcon={isAppendIcon}
+        isPrependTextHtml={isPrependTextHtml}
+        prependText={prependText}
+        isAppendTextHtml={isAppendTextHtml}
+        appendText={appendText}
+        options={options}
+        isMulti={isMulti}
+        isClearable={isClearable}
+        isSearchable={isSearchable}
+      />
+    </React.Fragment>
+  )
+}
