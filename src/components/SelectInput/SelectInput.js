@@ -13,13 +13,20 @@ const SelectInput = ({
   onValueChange
 }) => {
   const handleSelectChange = (selectedOption) => {
-    onValueChange(selectedOption.value);
-    //console.log(`Option selected:`, selectedOption.value);
+    if (selectedOption === null) {
+      // set value as string empty if its empty
+      onValueChange('');
+    } else {
+      onValueChange(selectedOption.value);
+    }
   }
 
   const getValue = (options, values) => {
     if (isMulti) {
-      return values.map(item => options.find(o => o.value === item));
+      // dont return if it empty string
+      if (values !== '') {
+        return values.map(item => options.find(o => o.value === item));
+      }
     } else {
       return options.filter(o => o.value === values);
     }
