@@ -32,7 +32,8 @@ import moment from 'moment';
 import {
   PasswordInput,
   SelectInput,
-  DateRange
+  DateRange,
+  Switch
 } from '../../../components';
 
 export const InputType = {
@@ -65,10 +66,24 @@ const InlineFormRender = (props) => {
             </FormGroup>
           </React.Fragment>
         :
-          <FormGroup>
-            <Label htmlFor={props.name}>{props.label} {props.isRequired ? <span className="required-sign">*</span> : ''}</Label>
-            {props.children}
-          </FormGroup>
+          <React.Fragment>
+            {props.isSwitch
+              ?
+                <FormGroup row>
+                  <Col md="2">
+                    {props.children}
+                  </Col>
+                  <Col md="10">
+                    <Label htmlFor="name">{props.label}</Label>
+                  </Col>
+                </FormGroup>
+              :
+                <FormGroup>
+                  <Label htmlFor={props.name}>{props.label} {props.isRequired ? <span className="required-sign">*</span> : ''}</Label>
+                  {props.children}
+                </FormGroup>
+            }
+          </React.Fragment>
       }
     </React.Fragment>
   );
@@ -83,6 +98,7 @@ export const RenderInput = ({
   placeholder,
   disabled = false,
   isInline = false,
+  isSwitch = false,
   isRequired = false,
   isAppendIcon = false,
   isPrependTextHtml = false,
@@ -109,6 +125,13 @@ export const RenderInput = ({
   isMulti,
   isClearable,
   isSearchable,
+
+  // switch input
+  variant,
+  color,
+  outline,
+  dataOn,
+  dataOff,
 }) => {
   return (
     <React.Fragment>
@@ -116,6 +139,7 @@ export const RenderInput = ({
         label={label}
         name={name}
         isInline={isInline}
+        isSwitch={isSwitch}
         isRequired={isRequired}
         touched={touched}
         error={error}
@@ -162,6 +186,12 @@ export const RenderInput = ({
                 isMulti={isMulti}
                 isClearable={isClearable}
                 isSearchable={isSearchable}
+
+                variant={variant}
+                color={color}
+                outline={outline}
+                dataOn={dataOn}
+                dataOff={dataOff}
               />
               {
                 appendText
@@ -203,6 +233,12 @@ export const RenderInput = ({
               isMulti={isMulti}
               isClearable={isClearable}
               isSearchable={isSearchable}
+
+              variant={variant}
+              color={color}
+              outline={outline}
+              dataOn={dataOn}
+              dataOff={dataOff}
             />
         }
         {touched && (error && <div className="help-block invalid-field">{error}</div>)}
@@ -240,6 +276,13 @@ export const InputSelector = ({
   isMulti = false,
   isClearable = true,
   isSearchable = true,
+
+  // switch input
+  variant = '3d',
+  color = 'primary',
+  outline = false,
+  dataOn = '\u2713',
+  dataOff = '\u2715',
 }) => {
   switch (inputType) {
     case InputType.SIMPLE_INPUT:
@@ -342,7 +385,6 @@ export const InputSelector = ({
             value={input.value}
             options={options}
             label={input.label}
-            // value={input.value}
             onValueChange={selectedValue =>
               input.onChange(
                 selectedValue
@@ -353,6 +395,24 @@ export const InputSelector = ({
             isSearchable={isSearchable}
             touched={touched}
             error={error}
+          />
+        </React.Fragment>
+      );
+    case InputType.SWITCH_INPUT:
+      return (
+        <React.Fragment>
+          <Switch
+            value={input.value}
+            label={input.label}
+            onValueChange={checkedValue =>
+              input.onChange(checkedValue)
+            }
+            variant={variant}
+            color={color}
+            outline={outline}
+            dataOn={dataOn}
+            dataOff={dataOff}
+            disabled={disabled}
           />
         </React.Fragment>
       );

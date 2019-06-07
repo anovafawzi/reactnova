@@ -235,3 +235,35 @@ export const SelectInput = ({
     </React.Fragment>
   )
 }
+
+export const SwitchInput = ({
+  name,
+  type,
+  label,
+  variant = '3d',
+  color = 'primary',
+  outline = false,
+  dataOn = '\u2713',
+  dataOff = '\u2715',
+  isSwitch = false,
+  disabled = false,
+}) => {
+  return (
+    <React.Fragment>
+      <Field
+        inputType={InputType.SWITCH_INPUT}
+        name={name}
+        component={RenderInput}
+        type={'checkbox'}
+        label={label}
+        variant={variant}
+        color={color}
+        outline={outline}
+        dataOn={dataOn}
+        dataOff={dataOff}
+        disabled={disabled}
+        isSwitch={isSwitch}
+      />
+    </React.Fragment>
+  )
+}

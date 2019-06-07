@@ -40,6 +40,7 @@ import {
   DateTimeInput,
   DateRangeInput,
   SelectInput,
+  SwitchInput,
 } from '../../../components/FieldWrapper/FinalForm/FinalForm';
 
 // schema validator
@@ -646,6 +647,7 @@ const SampleForm = () => {
                         },
                         selectTest: 'strawberry',
                         selectMultiTest: ['strawberry', 'vanilla'],
+                        switchInputTest: true
                       }}
                       render={({handleSubmit, form, submitting, pristine, values}) => (
                         <form onSubmit={handleSubmit}>
@@ -698,7 +700,7 @@ const SampleForm = () => {
                             name="numberTest"
                             label="Number test"
                             placeholder="Number test"
-                            prefix={'$$'}
+                            prefix={'€'}
                           />
                           <DateTimeInput
                             name="dateTest"
@@ -736,6 +738,13 @@ const SampleForm = () => {
                               { value: 'vanilla', label: 'Vanilla' }
                             ]}
                             isMulti
+                          />
+                          <SwitchInput
+                            name="switchInputTest"
+                            label="This is a switch"
+                            variant=""
+                            color="success"
+                            isSwitch
                           />
                           <div className="form-actions">
                             <Button type="submit" color="primary">Save changes</Button>
