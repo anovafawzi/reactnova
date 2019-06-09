@@ -6,8 +6,8 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import {
   DateRangePicker,
-  SingleDatePicker,
-  DayPickerRangeController
+  // SingleDatePicker,
+  // DayPickerRangeController
 } from 'react-dates';
 
 const DateRange = ({

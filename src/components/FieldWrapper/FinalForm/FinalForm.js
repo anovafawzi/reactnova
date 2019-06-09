@@ -267,3 +267,53 @@ export const SwitchInput = ({
     </React.Fragment>
   )
 }
+
+export const RadioInput = ({
+  name,
+  type,
+  label,
+  placeholder,
+  isInline = false,
+  isRequired = false,
+  options,
+  disabled = false,
+}) => {
+  return (
+    <Field
+      inputType={InputType.RADIO_INPUT}
+      name={name}
+      component={RenderInput}
+      type={type}
+      label={label}
+      placeholder={placeholder}
+      isInline={isInline}
+      isRequired={isRequired}
+      options={options}
+      disabled={disabled}
+    />
+  )
+}
+
+export const CheckboxInput = ({
+  name,
+  type,
+  label,
+  placeholder,
+  isInline = false,
+  isRequired = false,
+  isCheckbox = true,
+}) => {
+  return (
+    <Field
+      inputType={InputType.CHECKBOX_INPUT}
+      name={name}
+      component={RenderInput}
+      type={type}
+      label={label}
+      placeholder={placeholder}
+      isInline={isInline}
+      isRequired={isRequired}
+      isCheckbox={isCheckbox}
+    />
+  )
+}

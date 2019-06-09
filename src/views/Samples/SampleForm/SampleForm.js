@@ -41,6 +41,8 @@ import {
   DateRangeInput,
   SelectInput,
   SwitchInput,
+  RadioInput,
+  CheckboxInput,
 } from '../../../components/FieldWrapper/FinalForm/FinalForm';
 
 // schema validator
@@ -535,8 +537,14 @@ const SampleForm = () => {
                       <Row>
                         <Col xs="12">
                           <FormGroup check inline>
-                            <Input className="form-check-input form-radio" type="radio" id="inline-radio1" name="inline-radio1" value="option2" />
-                            <Label className="form-check-label" check htmlFor="inline-radio1">Radio example</Label>
+                            <Input className="form-check-input form-radio" type="radio" name="inline-radio1" value="option1" />
+                            <Label className="form-check-label" check htmlFor="inline-radio1">Radio option 1</Label>
+                          </FormGroup>
+                        </Col>
+                        <Col xs="12">
+                          <FormGroup check inline>
+                            <Input className="form-check-input form-radio" type="radio" name="inline-radio1" value="option2" />
+                            <Label className="form-check-label" check htmlFor="inline-radio1">Radio option 2</Label>
                           </FormGroup>
                         </Col>
                       </Row>
@@ -647,7 +655,9 @@ const SampleForm = () => {
                         },
                         selectTest: 'strawberry',
                         selectMultiTest: ['strawberry', 'vanilla'],
-                        switchInputTest: true
+                        switchInputTest: true,
+                        checkboxInputTest: true,
+                        radioInputTest: 'strawberry'
                       }}
                       render={({handleSubmit, form, submitting, pristine, values}) => (
                         <form onSubmit={handleSubmit}>
@@ -745,6 +755,21 @@ const SampleForm = () => {
                             variant=""
                             color="success"
                             isSwitch
+                          />
+                          <RadioInput
+                            name="radioInputTest"
+                            label="This is a radio"
+                            options={[
+                              { value: 'chocolate', label: 'Chocolate' },
+                              { value: 'strawberry', label: 'Strawberry' },
+                              { value: 'vanilla', label: 'Vanilla' }
+                            ]}
+                          />
+                          <CheckboxInput
+                            name="checkboxInputTest"
+                            label="This is a checkbox"
+                            type="checkbox"
+                            isCheckbox
                           />
                           <div className="form-actions">
                             <Button type="submit" color="primary">Save changes</Button>

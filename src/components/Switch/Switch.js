@@ -1,10 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppSwitch } from '@coreui/react'
-import {
-  FormGroup,
-  Col,
-  Label,
-} from 'reactstrap';
 
 const Switch = ({
   value,

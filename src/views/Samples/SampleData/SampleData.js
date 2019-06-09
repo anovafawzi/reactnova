@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import { Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 
 // load sample data hooks
 import { useSampleData } from '../../../hooks';

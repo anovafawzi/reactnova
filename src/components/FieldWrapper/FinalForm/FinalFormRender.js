@@ -33,7 +33,8 @@ import {
   PasswordInput,
   SelectInput,
   DateRange,
-  Switch
+  Switch,
+  Radio
 } from '../../../components';
 
 export const InputType = {
@@ -78,10 +79,20 @@ const InlineFormRender = (props) => {
                   </Col>
                 </FormGroup>
               :
-                <FormGroup>
-                  <Label htmlFor={props.name}>{props.label} {props.isRequired ? <span className="required-sign">*</span> : ''}</Label>
-                  {props.children}
-                </FormGroup>
+                <React.Fragment>
+                  {props.isCheckbox
+                    ?
+                      <FormGroup check inline>
+                        {props.children}
+                        <Label className="form-check-label" check htmlFor={props.name}>{props.label}</Label>
+                      </FormGroup>
+                    :
+                      <FormGroup>
+                        <Label htmlFor={props.name}>{props.label} {props.isRequired ? <span className="required-sign">*</span> : ''}</Label>
+                        {props.children}
+                      </FormGroup>
+                  }
+                </React.Fragment>
             }
           </React.Fragment>
       }
@@ -99,6 +110,7 @@ export const RenderInput = ({
   disabled = false,
   isInline = false,
   isSwitch = false,
+  isCheckbox = false,
   isRequired = false,
   isAppendIcon = false,
   isPrependTextHtml = false,
@@ -141,6 +153,7 @@ export const RenderInput = ({
         isInline={isInline}
         isSwitch={isSwitch}
         isRequired={isRequired}
+        isCheckbox={isCheckbox}
         touched={touched}
         error={error}
       >
@@ -415,6 +428,25 @@ export const InputSelector = ({
             disabled={disabled}
           />
         </React.Fragment>
+      );
+    case InputType.CHECKBOX_INPUT:
+      return (
+        <Input {...input} className="form-check-input form-checkbox" disabled={disabled} type={type} id={name} name={name} />
+      );
+    case InputType.RADIO_INPUT:
+      return (
+        <Radio
+            value={input.value}
+            name={input.name}
+            options={options}
+            label={input.label}
+            onValueChange={selectedValue =>
+              input.onChange(
+                selectedValue
+              )
+            }
+            error={error}
+          />
       );
     default:
       return (
