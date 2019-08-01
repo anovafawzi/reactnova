@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import intl from 'react-intl-universal';
 
 // global app container
@@ -13,6 +13,19 @@ const locales = {
 	//'id-ID': require('./locales/id.json'),
 };
 
+const RenderApp = (initDone: any): JSX.Element => {
+  if (initDone) {
+    return (
+      <React.Fragment>
+        <AppStore>
+          <AppContainer />
+        </AppStore>
+      </React.Fragment>
+    );
+  }
+  return <React.Fragment></React.Fragment>;
+}
+
 const App = () => {
   const [initDone, setInitDone] = useState(false);
 
@@ -26,10 +39,8 @@ const App = () => {
   }, []);
 
   return (
-    initDone && <React.Fragment>
-      <AppStore>
-        <AppContainer />
-      </AppStore>
+    <React.Fragment>
+      <RenderApp initDone />
     </React.Fragment>
   );
 }

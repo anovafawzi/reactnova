@@ -16,6 +16,10 @@
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
     "@coreui/react": "^2.1.5",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.2",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.7.3",
@@ -46,6 +50,7 @@
     "react-test-renderer": "^16.8.4",
     "reactstrap": "^7.1.0",
     "simple-line-icons": "^2.4.1",
+    "typescript": "^3.5.3",
     "yup": "^0.26.10"
   },
   "devDependencies": {
